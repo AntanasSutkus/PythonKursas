@@ -37,7 +37,7 @@ galune = "e"
 print(pridedam_galune(sarasas, galune))
 
 
-def add_string(values, end_string = "stringeris") :
+def add_string(values, end_string = "stringeris"):
     return [f'{d}_{end_string}' for d in data]
 
 data = [1,3, "namas", "Kepure"]
@@ -86,8 +86,8 @@ def unikaliu_simboliu_stringai(sarasas):
     return unikalios_reiksmes
 
 sarasas = ["abc", "def", "aba", "xy", "hello", "world","miegas","zole","abrikosas"]
-unikalus_sarasas = unikaliu_simboliu_stringai(sarasas)
-print(unikalus_sarasas)
+
+print("zodziai su inikaliais simb:",unikaliu_simboliu_stringai(sarasas))
 
 
 """10.4 Parašykite programą, apibrėžiančią funkciją extract_email_addresses(), kuri priima tekstą kaip įvestį ir iš teksto ištraukia visus el. pašto adresus."""
