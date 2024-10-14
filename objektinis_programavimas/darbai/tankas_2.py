@@ -12,6 +12,7 @@ class Tank:
         self.total_shoots = 0
         self.acurate_shoots = 0
         self.missed_shoots = 0
+        self.score = 100
 
     def print_board(self):
         for x in range(10):
@@ -39,12 +40,16 @@ class Tank:
     def move(self):
         if self.position == "^":
             self.coordinate_x -= 1
+            self.score -= 10
         elif self.position == ">":
             self.coordinate_y += 1
+            self.score -= 10
         elif self.position == "v":
             self.coordinate_x += 1
+            self.score -= 10
         elif self.position == "<":
             self.coordinate_y -= 1
+            self.score -= 10
         else:
             print("wrong direction")
 
@@ -55,6 +60,7 @@ class Tank:
             print("Target defeated")
             self.acurate_shoots += 1
             self.total_shoots += 1
+            self.score += 50
             self.target_x = random.randint(0, 9)
             self.target_y = random.randint(0, 9)
         elif (
@@ -63,6 +69,7 @@ class Tank:
             print("Target defeated")
             self.acurate_shoots += 1
             self.total_shoots += 1
+            self.score += 50
             self.target_x = random.randint(0, 9)
             self.target_y = random.randint(0, 9)
         elif (
@@ -71,6 +78,7 @@ class Tank:
             print("Target defeated")
             self.acurate_shoots += 1
             self.total_shoots += 1
+            self.score += 50
             self.target_x = random.randint(0, 9)
             self.target_y = random.randint(0, 9)
         elif (
@@ -79,12 +87,14 @@ class Tank:
             print("Target defeated")
             self.acurate_shoots += 1
             self.total_shoots += 1
+            self.score += 50
             self.target_x = random.randint(0, 9)
             self.target_y = random.randint(0, 9)
         else:
             print("You missed the target!")
             self.missed_shoots += 1
             self.total_shoots += 1
+            self.score -= 30
 
     def main(self):
         try:
@@ -93,9 +103,11 @@ class Tank:
                 if value == "q":
                     break
                 elif value in ["v", "^", "<", ">"]:
-                    self.rotate_tank(value)
+                    self.rotate_tank(value),
+                    print("Score:", self.score)
                 elif value == "m":
-                    self.move()
+                    self.move(),
+                    print("Score:", self.score)
                 elif value == "f":
                     self.fire()
                     print(
@@ -103,8 +115,10 @@ class Tank:
                         self.acurate_shoots,
                         "prasauta kartu:",
                         self.missed_shoots,
-                        "isviso suviu:",
+                        "is viso suviu:",
                         self.total_shoots,
+                        "Score:",
+                        self.score,
                     )
                 self.print_board()
         except ValueError:
